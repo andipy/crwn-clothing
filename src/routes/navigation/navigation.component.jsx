@@ -1,7 +1,7 @@
 import React from "react";
 import { Outlet, Link } from "react-router-dom";
 
-import { ReactComponent as CrwnLogo } from "../../../assets/logo/crown.svg";
+import { ReactComponent as CrwnLogo } from "../../assets/logo/crown.svg";
 
 import './navigation.style.scss';
 
