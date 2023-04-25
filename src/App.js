@@ -1,13 +1,25 @@
 import React from 'react';
+import { Routes, Route } from 'react-router-dom';
 
-import Directory from './components/directory/directory.component.jsx';
+import Navigation from './components/routes/navigation/navigation.component';
+import Home from './components/routes/home/home.component';
+import Signin from './components/routes/signin/signin.component';
+
+
+
+const Shop = () => {
+  return <h1>I'm the shop page</h1>
+}
 
 const App = () => {  
-
   return (
-    <>
-      <Directory />
-    </>
+    <Routes>
+      <Route path="/" element={<Navigation />}>
+        <Route index element={<Home />} />
+        <Route path="shop" element={<Shop />} />
+        <Route path="/sign-in" element={<Signin />} />
+      </Route>      
+    </Routes>
   );
 }
 
