@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
-import './navigation.style.scss';
+// import './navigation.style.scss';
+import { NavigationContainer, NavLinks, NavLink, LogoContainer } from "./navigation.style";
 
 import { Outlet, Link } from "react-router-dom";
 import { signOutUser } from "../../utils/firebase/firebase.utils";
@@ -23,25 +24,25 @@ const Navigation = () => {
     
     return (
       <>
-        <nav className="navigation">
-            <Link className="logo-container" to="/">
+        <NavigationContainer>
+            <LogoContainer to="/">
                 <CrwnLogo />
-            </Link>
-            <div className="nav-links-container">
-                <Link className="nav-link" to="/shop">
+            </LogoContainer>
+            <NavLinks>
+                <NavLink to="/shop">
                     SHOP
-                </Link>
+                </NavLink>
                 {currentUser ? (
-                    <span onClick={signOutHandler} className="nav-link">SIGN OUT</span>
+                    <NavLink as="span" onClick={signOutHandler}>SIGN OUT</NavLink>
                 ) : (
-                    <Link className="nav-link" to="/auth">
+                    <NavLink to="/auth">
                         SIGN IN
-                    </Link>
+                    </NavLink>
                 )}
                 <CartIcon />
-            </div>
+            </NavLinks>
             {isCartOpen && <CartDropdown />}            
-        </nav>
+        </NavigationContainer>
         <Outlet />
       </>
     )
